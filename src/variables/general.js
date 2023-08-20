@@ -204,13 +204,13 @@ export const tablesTableData = [
     // status: "Online",
     // date: "14/06/21",
 
-    // borrower_id: "10200304",
-    // servicer_loan_id: "9573894792",
-    // fullName: "vishal singh",
-    // email: "vishalsin66@gmail.com",
-    // contact_number: "9752982098",
-    // zip_code: "452010",
-    // mailing_address: "A-51 abhinandan nagar sukhliya indore"
+    borrower_id: "10200304",
+    servicer_loan_id: "9573894792",
+    fullName: "vishal singh",
+    email: "vishalsin66@gmail.com",
+    contact_number: "9752982098",
+    zip_code: "452010",
+    mailing_address: "A-51 abhinandan nagar sukhliya indore"
   }
 
 ];

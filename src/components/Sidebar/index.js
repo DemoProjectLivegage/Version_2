@@ -49,11 +49,11 @@ function Sidebar(props) {
         >
 
           <SidebarContent routes={routes}
-        logoText={"Livegage"}
-        
-        display="none"
-        sidebarVariant={sidebarVariant}
-        />
+            logoText={"Livegage"}
+
+            display="none"
+            sidebarVariant={sidebarVariant}
+          />
         </Box>
       </Box>
     </Box>

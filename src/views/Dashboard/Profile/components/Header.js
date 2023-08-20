@@ -15,7 +15,7 @@ const Header = ({
   avatarImage,
   name,
   email,
-  tabs,
+  // tabs,
 }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
@@ -92,7 +92,7 @@ const Header = ({
               </Text>
             </Flex>
           </Flex>
-          <Flex
+          {/* <Flex
             direction={{ sm: "column", lg: "row" }}
             w={{ sm: "100%", md: "50%", lg: "auto" }}>
             <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
@@ -103,8 +103,7 @@ const Header = ({
                 borderRadius='15px'
                 justifyContent='center'
                 py='10px'
-                boxShadow='inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
-                border='1px solid gray.200'
+                
                 cursor='pointer'>
                 {tabs[0].icon}
                 <Text
@@ -143,9 +142,9 @@ const Header = ({
                 justifyContent='center'
                 py='10px'
                 cursor='pointer'>
-                {tabs[2].icon}
-                <Text
-                  fontSize='xs'
+                {/* {tabs[2].icon} */}
+                {/* <Text
+                  // fontSize='xs'
                   color={textColor}
                   fontWeight='bold'
                   ms='6px'>
@@ -153,7 +152,7 @@ const Header = ({
                 </Text>
               </Flex>
             </Button>
-          </Flex>
+          </Flex> */} 
         </Flex>
       </Box>
     </Box>

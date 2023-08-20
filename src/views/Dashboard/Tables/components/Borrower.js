@@ -1,5 +1,8 @@
 // Chakra imports
 import {
+  Flex,
+  Grid,
+  Modal,
   Table,
   Tbody,
   Text,
@@ -8,18 +11,58 @@ import {
   Tr,
   useColorModeValue,
 } from "@chakra-ui/react";
+import axios from "axios";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
+import FileUploadComponent from "components/FileComponents/FileUploadComponent";
+import { SearchBar } from "components/Navbars/SearchBar/SearchBar";
 import TablesTableRow from "components/Tables/TablesTableRow";
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
-const Borrower = ({ title, captions, data }) => {
+
+const Borrower = ({ title, captions }) => {
   const textColor = useColorModeValue("gray.700", "white");
+  const [allData, setAllData] = useState([]);
+  const [showData, setShowData] = useState([]);
+  const [search, setSearch] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/borrower/")
+      .then(response => {
+        setAllData(response.data);
+        setShowData(response.data);
+      }).catch((error) => {
+        console.log(error);
+      })
+      
+  }, []);
+
+  useEffect(() => {
+    if (search) {
+      setShowData(allData.filter((x) => x.loanInformationId.toString().includes(search) || x.fullName.toLowerCase().includes(search)));
+    } else {
+      setShowData(allData);
+    }
+  }, [search])
+
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    setSearch(e.target.value);
+  }
+
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
-      <CardHeader p='6px 0px 22px 0px'>
+      <Grid >
+        <Flex >
+          <SearchBar handleChange={handleChange} />
+          <FileUploadComponent />
+          <ToastContainer />
+        </Flex>
+      </Grid>
+      ,<CardHeader p='6px 0px 22px 0px'>
         <Text fontSize='xl' color={textColor} fontWeight='bold'>
           {title}
         </Text>
@@ -38,16 +81,20 @@ const Borrower = ({ title, captions, data }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {data.map((row) => {
+            {showData.map((row) => {
               return (
+
                 <TablesTableRow
-                  key={`${row.borrower_id}-${row.servicer_loan_id}`}
+                  key={`${row.borrowerId}`}
+                  id={row.borrowerId}
+                  loanInformationId={row.loanInformationId}
+                  priorServicerLoanId={row.priorServicerLoanId}
                   name={row.fullName}
+                  contact_number={row.contactNumber}
                   email={row.email}
-                  contact_number={row.contact_number}
-                  domain={row.zip_code}
-                  status={row.mailing_address}
-                  
+                  zipCode={row.zipcode}
+                  mailingAddress={row.mailingAddress}
+
                 />
               );
             })}

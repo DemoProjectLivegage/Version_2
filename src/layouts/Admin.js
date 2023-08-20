@@ -102,7 +102,7 @@ export default function Dashboard(props) {
 				<Portal>
 					<AdminNavbar
 						onOpen={onOpen}
-						logoText={'PURITY UI DASHBOARD'}
+						// logoText={'PURITY UI DASHBOARD'}
 						brandText={getActiveRoute(routes)}
 						secondary={getActiveNavbar(routes)}
 						fixed={fixed}
@@ -114,7 +114,7 @@ export default function Dashboard(props) {
 						<PanelContainer>
 							<Switch>
 								{getRoutes(routes)}
-								<Redirect from='/admin' to='/admin/dashboard' />
+								<Redirect from='/admin' to='/admin/' />
 							</Switch>
 						</PanelContainer>
 					</PanelContent>

@@ -9,7 +9,7 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 export function SearchBar(props) {
   // Pass the computed styles into the `__css` prop
-  const { variant, children, ...rest } = props;
+  const { variant, children,handleChange, ...rest } = props;
   // Chakra Color Mode
   const mainTeal = useColorModeValue("teal.300", "teal.300");
   const searchIconColor = useColorModeValue("gray.700", "gray.200");
@@ -49,6 +49,7 @@ export function SearchBar(props) {
         py="11px"
         placeholder="Type here..."
         borderRadius="inherit"
+        onChange={handleChange}
       />
     </InputGroup>
   );

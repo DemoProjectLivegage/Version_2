@@ -19,14 +19,6 @@ import {
 } from "components/Icons/Icons";
 
 var dashRoutes = [
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   rtlName: "لوحة القيادة",
-  //   icon: <HomeIcon color="inherit" />,
-  //   component: Dashboard,
-  //   layout: "/admin",
-  // },
   {
     path: "/tables",
     name: "Loan Tables",
@@ -40,24 +32,17 @@ var dashRoutes = [
   //   name: "Information",
   //   rtlName: "لوحة القيادة",
   //   icon: <CreditIcon color="inherit" />,
-  //   component: Information,
+  //   component: Billing,
   //   layout: "/admin",
   // },
   {
-    path: "/information",
-    name: "Information",
-    rtlName: "لوحة القيادة",
-    icon: <CreditIcon color="inherit" />,
-    component: Billing,
+    path: "/info",
+    // name: "Profile Information",
+    // rtlName: "لوحة القيادة",
+    // icon: <PersonIcon color="inherit" />,
+    // secondaryNavbar: true,
+    component: Profile,
     layout: "/admin",
-  },
-  // {
-  //   path: "/rtl-support-page",
-  //   name: "RTL",
-  //   rtlName: "آرتيإل",
-  //   icon: <SupportIcon color="inherit" />,
-  //   component: RTLPage,
-  //   layout: "/rtl",
   // },
   // {
   //   name: "ACCOUNT PAGES",
@@ -93,5 +78,6 @@ var dashRoutes = [
   //     },
   //   ],
   // },
+  }
 ];
 export default dashRoutes;

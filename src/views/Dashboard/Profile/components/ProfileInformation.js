@@ -12,7 +12,7 @@ const ProfileInformation = ({
   description,
   name,
   mobile,
-  email,
+  zipCode,
   location,
 }) => {
   // Chakra color mode
@@ -48,21 +48,21 @@ const ProfileInformation = ({
           </Flex>
           <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Email:{" "}
-            </Text>
-            <Text fontSize='md' color='gray.500' fontWeight='400'>
-              {email}
-            </Text>
-          </Flex>
-          <Flex align='center' mb='18px'>
-            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
-              Location:{" "}
+              Mailing Address:{" "}
             </Text>
             <Text fontSize='md' color='gray.500' fontWeight='400'>
               {location}
             </Text>
           </Flex>
           <Flex align='center' mb='18px'>
+            <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
+              zip code:{" "}
+            </Text>
+            <Text fontSize='md' color='gray.500' fontWeight='400'>
+              {zipCode}
+            </Text>
+          </Flex>
+          {/* <Flex align='center' mb='18px'>
             <Text fontSize='md' color={textColor} fontWeight='bold' me='10px'>
               Social Media:{" "}
             </Text>
@@ -92,7 +92,7 @@ const ProfileInformation = ({
                 <Icon as={FaTwitter} />
               </Link>
             </Flex>
-          </Flex>
+          </Flex> */}
         </Flex>
       </CardBody>
     </Card>
