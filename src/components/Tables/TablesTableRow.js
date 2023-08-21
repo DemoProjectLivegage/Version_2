@@ -9,8 +9,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import { useEffect,useState } from "react";
-import Information from "views/Dashboard/Tables/Borrower_information/Information";
 import { useHistory } from 'react-router-dom';
 
 function TablesTableRow(props) {
@@ -59,16 +57,16 @@ function TablesTableRow(props) {
           {contact_number}
         </Text>
       </Td>
-      <Td>
+      {/* <Td>
         <Flex direction="column">
           <Text fontSize="md" color={textColor} fontWeight="bold">
             {zipCode}
           </Text>
-          {/* <Text fontSize="sm" color="gray.400" fontWeight="normal">
+          <Text fontSize="sm" color="gray.400" fontWeight="normal">
             {}
-          </Text> */}
+          </Text>
         </Flex>
-      </Td>
+      </Td> */}
     </Tr>
   );
 }

@@ -52,7 +52,7 @@ const Details = ({
           {tableName.map((dd, index) => {
             if (header[index] === "Escrow") {
               var show = "";
-              data[dd]===true?show="Selected":show="Not Selected";
+              data[dd] === true ? show = "Selected" : show = "Not Selected";
               // console.log(data[dd])
               return (
                 <Flex align='center' mb='18px'>

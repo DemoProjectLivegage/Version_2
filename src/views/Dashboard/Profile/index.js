@@ -25,7 +25,6 @@ function Profile() {
   const [masterLoanData, setMasterLoanData] = useState([]);
   const [loanData, setLoanData] = useState([]);
   useEffect(() => {
-    console.log(borrowerData.id);
     axios.get(`http://localhost:5000/api/borrower/loaninfo/${borrowerData.id}`)
       .then(response => {
         setMasterLoanData(response.data);

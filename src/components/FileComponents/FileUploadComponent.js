@@ -14,26 +14,38 @@ function FileUploadComponent() {
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
-  const showToastMessage = () => {
-    toast.success('File Uploaded Successfully! ', {
-      position: toast.POSITION.TOP_RIGHT
-    });
+  const showToastMessage = (message,types) => {
+    if (types) {
+      toast.success(message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+    else {
+      toast.error(message, {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
   };
 
   const handleFileUpload = () => {
     const formData = new FormData();
     formData.append('file', selectedFile);
-
-    axios.post('http://localhost:5000/api/borrower', formData)
-      .then(response => {
-        onClose();
-        showToastMessage();
-        // window.location.reload(true);
-      })
-      .catch(error => {
-        console.error('Error uploading file');
-        // showToastMessage();
-      });
+    if (selectedFile) {
+      axios.post('http://localhost:5000/api/borrower/', formData)
+        .then(response => {
+          onClose();
+          showToastMessage("File uploaded successfully!",true);
+          // window.location.reload(true);
+        })
+        .catch(error => {
+          console.error('Error uploading file', error.response.data);
+          showToastMessage("please check the file.",false);
+          // showToastMessage();
+        });
+    }
+    else{
+      showToastMessage("Please choose a file.");
+    }
   };
 
   return (

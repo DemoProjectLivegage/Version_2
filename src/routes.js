@@ -22,7 +22,6 @@ var dashRoutes = [
   {
     path: "/tables",
     name: "Loan Tables",
-    rtlName: "لوحة القيادة",
     icon: <StatsIcon color="inherit" />,
     component: Tables,
     layout: "/admin",
