@@ -17,6 +17,7 @@ import {
   RocketIcon,
   SupportIcon,
 } from "components/Icons/Icons";
+import TabTables from "components/Tables/TabTables";
 
 var dashRoutes = [
   {
@@ -26,17 +27,17 @@ var dashRoutes = [
     component: Tables,
     layout: "/admin",
   },
-  // {
-  //   path: "/information",
-  //   name: "Information",
-  //   rtlName: "لوحة القيادة",
-  //   icon: <CreditIcon color="inherit" />,
-  //   component: Billing,
-  //   layout: "/admin",
-  // },
+  {
+    path: "/paymentdetails",
+    name: "Hidden",
+    rtlName: "لوحة القيادة",
+    icon: <CreditIcon color="inherit" />,
+    component: TabTables,
+    layout: "/admin",
+  },
   {
     path: "/info",
-    // name: "Profile Information",
+    name: "Hidden",
     // rtlName: "لوحة القيادة",
     // icon: <PersonIcon color="inherit" />,
     // secondaryNavbar: true,

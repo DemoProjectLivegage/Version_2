@@ -67,9 +67,10 @@ const SidebarContent = ({ logoText, routes }) => {
           </div>
         );
       }
+      if(prop.name !=="Hidden")
       return (
         <NavLink to={prop.layout + prop.path} key={prop.name}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
+        {  activeRoute(prop.layout + prop.path) === "active" ? (
             <Button
               boxSize="initial"
               justifyContent="flex-start"
@@ -172,7 +173,9 @@ const SidebarContent = ({ logoText, routes }) => {
           )}
         </NavLink>
       );
+                
     });
+    
   };
 
     const links = <>{createLinks(routes)}</>;
@@ -207,4 +210,4 @@ const SidebarContent = ({ logoText, routes }) => {
   )
 }
 
-export default SidebarContent
+export default SidebarContent;

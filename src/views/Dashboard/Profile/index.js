@@ -1,5 +1,5 @@
 // Chakra imports
-import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
+import { Button, Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import React, { useEffect } from "react";
 import Header from "./components/Header";
@@ -9,6 +9,7 @@ import Details from "./components/Details";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import TabTables from "components/Tables/TabTables";
 function Profile() {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
@@ -75,8 +76,8 @@ function Profile() {
           data={masterLoanData}
           use ="masterD"
         />
-      
-        <Details
+      <Grid templateRows={{ sm: "1fr", xl: "repeat(2, 1fr)" }} gap='20px'>
+      <Details
           title={"Loan Details"}
           header={["Pi Payment Amount",
             "UPB Amount",
@@ -85,6 +86,9 @@ function Profile() {
           data={loanData}
           use="loanD"
         />
+        <Button onClick={()=> history.push("/admin/paymentdetails")}>Payment Details</Button>
+      </Grid>
+       
       </Grid>
       {/* <Projects title={"Loan Details"} description={"User Loan Details"} /> */}
     </Flex>
