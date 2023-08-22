@@ -2,7 +2,7 @@
 import { Flex } from "@chakra-ui/react";
 // Assets
 import React from "react";
-import Information from "../Tables/Borrower_information/Information";
+// import Information from "../Tables/Borrower_information/Information";
 
 function Billing() {
   return (
@@ -75,10 +75,7 @@ function Billing() {
         />
       </Grid> */}
 
-        <Information
-
-        // data={tablesTableData}
-      />
+       
 
 
     </Flex>

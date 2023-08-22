@@ -521,3 +521,25 @@ export const VisaIcon = createIcon({
     </svg>
   ),
 });
+
+
+// export default BeneficiaryIcon=createIcon({
+//   displayName:"BeneficiaryIcon",
+//   viewBox:"0 0 98 122.5",
+//   path:(
+//     <svg 
+//     width="26"
+//     height="20"
+//     viewBox="0 0 98 98"
+//     fill="currentColor"
+//     xmlns="http://www.w3.org/2000/svg"
+    
+//     >
+//     <path
+//     fill="currentColor"
+//     d="M20.994 66.359a1.412 1"
+//     />
+//     </svg>
+//   ),
+// });
+  

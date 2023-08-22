@@ -1,13 +1,14 @@
 // import
 import Dashboard from "views/Dashboard/Dashboard";
 import Tables from "views/Dashboard/Tables";
-import Information from "views/Dashboard/Tables/Borrower_information/Information";
-import Billing from "views/Dashboard/Billing";
+// import Information from "views/Dashboard/Tables/Borrower_information/Information";
+import Beneficiaries from "views/Dashboard/Beneficiaries";
 import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
-
+import TabTables from "components/Tables/TabTables";
+import PaymentDetails from "views/Dashboard/PaymentDetails";
 import {
   HomeIcon,
   StatsIcon,
@@ -16,8 +17,9 @@ import {
   DocumentIcon,
   RocketIcon,
   SupportIcon,
+  BeneficiaryIcon
 } from "components/Icons/Icons";
-import TabTables from "components/Tables/TabTables";
+
 
 var dashRoutes = [
   {
@@ -32,7 +34,7 @@ var dashRoutes = [
     name: "Hidden",
     rtlName: "لوحة القيادة",
     icon: <CreditIcon color="inherit" />,
-    component: TabTables,
+    component: PaymentDetails,
     layout: "/admin",
   },
   {
@@ -43,7 +45,16 @@ var dashRoutes = [
     // secondaryNavbar: true,
     component: Profile,
     layout: "/admin",
-  // },
+  },
+  {
+    path: "/beneficiary",
+    name: "Show Beneficiairies",
+    // rtlName: "لوحة القيادة",
+    icon: <PersonIcon color="inherit" />,
+    // secondaryNavbar: true,
+    component: Beneficiaries ,
+    layout: "/admin",
+   },
   // {
   //   name: "ACCOUNT PAGES",
   //   category: "account",
@@ -78,6 +89,6 @@ var dashRoutes = [
   //     },
   //   ],
   // },
-  }
+  
 ];
 export default dashRoutes;
