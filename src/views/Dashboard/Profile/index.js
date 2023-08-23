@@ -86,7 +86,7 @@ function Profile() {
           data={loanData}
           use="loanD"
         />
-        <Button onClick={()=> history.push("/admin/paymentdetails")}>Payment Details</Button>
+        <Button onClick={()=> history.push({pathname:"/admin/paymentdetails", state:masterLoanData.loanInformationId})}>Payment Details</Button>
       </Grid>
        
       </Grid>

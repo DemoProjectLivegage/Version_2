@@ -12,7 +12,14 @@ import {
   Th,
   Td,
   Grid,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
+
+ 
+import {ChevronDownIcon} from '@chakra-ui/icons';
 import { ChakraProvider, Box, Heading, FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 
 const TabTables = (props) => {
@@ -21,18 +28,17 @@ const TabTables = (props) => {
   const handleTabChange = (index) => {
     setSelectedTab(index);
   };
-  const { TabName, form, datas, header,extra,header2,data2,data3,header3 } = props;
+  const { TabName, form, datas, header, extra, header2, data2, data3, header3 } = props;
   const key1 = Object.keys(datas[0]);
-var key2=0;
-var  key3=0;
-  if(extra)
-  {
-     key2=Object.keys(data2[0]);
-     key3=Object.keys(data3[0]);
+  var key2 = 0;
+  var key3 = 0;
+  if (extra) {
+    key2 = Object.keys(data2[0]);
+    key3 = Object.keys(data3[0]);
   }
 
- 
- 
+
+
   return (
     <Tabs onChange={handleTabChange} style={{ marginTop: "100px" }} isLazy>
       <TabList>
@@ -91,82 +97,101 @@ var  key3=0;
                 <FormControl mt={4}>
                   <FormLabel>Routing Number</FormLabel>
                   <Input type="text" placeholder="Enter routing number" />
+                </FormControl >
+                <Grid templateColumns={{sm: "1fr", xl: "repeat(3, 1fr)"}} gap="20px">
+                <FormControl mt={10}>
+                  <Menu>
+                    <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                     Payment Mode
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem>Cheque</MenuItem>
+                      <MenuItem>Wired</MenuItem>
+                    
+                    </MenuList>
+                  </Menu>
                 </FormControl>
-                <FormControl mt={4}>
-                  <FormLabel>Payment Mode</FormLabel>
-                  <Input type="text" placeholder="Enter mode of payment" />
+                <FormControl mt={10}>
+                <Menu>
+                    <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                     Frequency
+                    </MenuButton>
+                    <MenuList>
+                      <MenuItem>Monthly</MenuItem>
+                      <MenuItem>Quarterly</MenuItem>
+                      <MenuItem>Annually</MenuItem>
+                    
+                    </MenuList>
+                  </Menu>
                 </FormControl>
-                <FormControl mt={4}>
-                  <FormLabel>Frequency</FormLabel>
-                  <Input type="text" placeholder="Enter payment frequency" />
-                </FormControl>
+                </Grid>
               </Grid>
             </Grid>
             <Box display="flex" alignItems="center">
-            <Button mt={4} marginX="auto" colorScheme="blue" type="submit">
-              Login
-            </Button>
+              <Button mt={4} marginX="auto" colorScheme="blue" type="submit">
+                Login
+              </Button>
             </Box>
           </TabPanel>
         }
-{extra &&
-<TabPanel>
-          <Table variant="styled">
-            <Thead>
-              <Tr>
-                {header2.map((head) => {
-                  return (
-                    <Th>{head}</Th>
-                  );
-                })}
-              </Tr>
-            </Thead>
-            <Tbody>
-              {data2.map((data, index) => {
-                return (
-                  <Tr key={index}>
-                    {key2.map((item) => {
-                      return (
-                        <Td>{data[item]}</Td>
-                      )
-                    })}
-                  </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
-        </TabPanel>
-}
-{extra &&
+        {extra &&
           <TabPanel>
-          <Table variant="styled">
-            <Thead>
-              <Tr>
-                {header3.map((head) => {
+            <Table variant="styled">
+              <Thead>
+                <Tr>
+                  {header2.map((head) => {
+                    return (
+                      <Th>{head}</Th>
+                    );
+                  })}
+                </Tr>
+              </Thead>
+              <Tbody>
+                {data2.map((data, index) => {
                   return (
-                    <Th>{head}</Th>
-                  );
+                    <Tr key={index}>
+                      {key2.map((item) => {
+                        return (
+                          <Td>{data[item]}</Td>
+                        )
+                      })}
+                    </Tr>
+                  )
                 })}
-              </Tr>
-            </Thead>
-            <Tbody>
-              {data3.map((data, index) => {
-                return (
-                  <Tr key={index}>
-                    {key3.map((item) => {
-                      return (
-                        <Td>{data[item]}</Td>
-                      )
-                    })}
-                  </Tr>
-                )
-              })}
-            </Tbody>
-          </Table>
-        </TabPanel>
+              </Tbody>
+            </Table>
+          </TabPanel>
+        }
+        {extra &&
+          <TabPanel>
+            <Table variant="styled">
+              <Thead>
+                <Tr>
+                  {header3.map((head) => {
+                    return (
+                      <Th>{head}</Th>
+                    );
+                  })}
+                </Tr>
+              </Thead>
+              <Tbody>
+                {data3.map((data, index) => {
+                  return (
+                    <Tr key={index}>
+                      {key3.map((item) => {
+                        return (
+                          <Td>{data[item]}</Td>
+                        )
+                      })}
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </TabPanel>
 
 
-      }
+        }
       </TabPanels>
     </Tabs>
   );

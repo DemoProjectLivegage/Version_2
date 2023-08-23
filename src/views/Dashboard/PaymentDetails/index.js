@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import TabTables from 'components/Tables/TabTables'
-
-
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export default function PaymentDetails()
 {
@@ -9,13 +9,15 @@ export default function PaymentDetails()
     const headers=["Loan Id", "Payment Date", "Principal Amount","Interest Amount","Escrow"]
     const header2=["Escrow Type","Name","Account Number","Routing Number","Payment Mode","Frequency"];
     const header3=["Date","Escrow Payment Amount","Escrow Disbursement Amount","Escrow Balance"];
-    const data=[{
+    
+   const location = useLocation();
+    const [data,setData]=useState([{
         "LoanId":"12",
         "PaymentDate":"02/09/2023",
         "PrincipalAmount":"$23345",
         "InterestAmount":"$1000",
         "Escrow":"$600",
-    }]
+    }]);
 
     const data2=[{
         "EscrowType":"Mortgage Insurance",
@@ -33,6 +35,20 @@ export default function PaymentDetails()
         "Escrow Balance":"$1234"
     }
    ]
+
+   useEffect(()=>{
+    // const loan_id =1;
+    // ids =location.state
+    axios.get(`http://localhost:5000/api/paymentschedule/${location.state}`)
+    .then(response=>{
+     setData(response.data);
+     console.log(response.data);
+    }).catch((error)=>{
+        console.log(error);
+    })
+   },[])
+
+
     return(
     <>
       <TabTables TabName={tabs} header={headers} datas={data} form={false} extra={true} header2={header2} data2={data2} header3={header3} data3={data3}/>
