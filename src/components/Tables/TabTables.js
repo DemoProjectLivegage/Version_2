@@ -18,12 +18,23 @@ import {
   MenuItem,
 } from '@chakra-ui/react';
 
- 
+import axios from "axios";
 import {ChevronDownIcon} from '@chakra-ui/icons';
 import { ChakraProvider, Box, Heading, FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 
 const TabTables = (props) => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+
+   const [type,setType]=useState("");
+   const [number,setNumber]=useState();
+   const [name,setName]=useState("");
+   const [account,setAccount]=useState();
+   const [mode,setMode]=useState("");
+   const [frequency,setFrequency]=useState("");
+
+
+    
 
   const handleTabChange = (index) => {
     setSelectedTab(index);
@@ -36,8 +47,30 @@ const TabTables = (props) => {
     key2 = Object.keys(data2[0]);
     key3 = Object.keys(data3[0]);
   }
+ 
 
-
+   const handleChange=(e)=>{
+    const data=[{
+      "escrow_type": type,
+      "name": name,
+      "account_no":account,
+      "routing_no":number,
+       "payment_mode":mode,
+       "frequency":frequency
+    }]
+      axios.post(`http://localhost:5000/api/beneficiary`,data )
+      .then((response)=>
+     {window.alert("Submitted")
+      console.log("form submitted", data);
+      });
+    console.log("clicked")
+   }
+const handleMenuItemClick=(value)=>{
+  setMode(value);
+}
+const handleMenuClick=(value)=>{
+  setFrequency(value);
+}
 
   return (
     <Tabs onChange={handleTabChange} style={{ marginTop: "100px" }} isLazy>
@@ -82,21 +115,21 @@ const TabTables = (props) => {
               <Grid templateRows={{ sm: "1fr", xl: "repeat(3, .1fr)" }} gap='22px'>
                 <FormControl>
                   <FormLabel mt={4}>Escrow Type</FormLabel>
-                  <Input type="text" placeholder="Enter escrow type" />
+                  <Input type="text" placeholder="Enter escrow type" value={type} onChange={(e)=>setType(e.target.value)} />
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Beneficiary Name</FormLabel>
-                  <Input type="text" placeholder="Enter beneficiary" />
+                  <Input type="text" placeholder="Enter beneficiary" value={name} onChange={(e)=>setName(e.target.value)} />
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Account Number</FormLabel>
-                  <Input type="number" placeholder="Enter account number" />
+                  <Input type="number" placeholder="Enter account number" value={account} onChange={(e)=>setAccount(e.target.value)} />
                 </FormControl>
               </Grid>
               <Grid templateRows={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap='22px'>
                 <FormControl mt={4}>
                   <FormLabel>Routing Number</FormLabel>
-                  <Input type="text" placeholder="Enter routing number" />
+                  <Input type="text" placeholder="Enter routing number" value={number} onChange={(e)=>setNumber(e.target.value)}/>
                 </FormControl >
                 <Grid templateColumns={{sm: "1fr", xl: "repeat(3, 1fr)"}} gap="20px">
                 <FormControl mt={10}>
@@ -104,9 +137,9 @@ const TabTables = (props) => {
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                      Payment Mode
                     </MenuButton>
-                    <MenuList>
-                      <MenuItem>Cheque</MenuItem>
-                      <MenuItem>Wired</MenuItem>
+                    <MenuList  >
+                      <MenuItem onClick={()=> handleMenuItemClick("CHEQUE")}>Cheque</MenuItem>
+                      <MenuItem onClick={()=> handleMenuItemClick("WIRED")}>Wired</MenuItem>
                     
                     </MenuList>
                   </Menu>
@@ -116,10 +149,10 @@ const TabTables = (props) => {
                     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                      Frequency
                     </MenuButton>
-                    <MenuList>
-                      <MenuItem>Monthly</MenuItem>
-                      <MenuItem>Quarterly</MenuItem>
-                      <MenuItem>Annually</MenuItem>
+                    <MenuList >
+                      <MenuItem  onClick={()=> handleMenuClick("MONTHLY")}>Monthly</MenuItem>
+                      <MenuItem  onClick={()=> handleMenuClick("QUARTERLY")}>Quarterly</MenuItem>
+                      <MenuItem  onClick={()=> handleMenuClick("ANNUALLY")}>Annually</MenuItem>
                     
                     </MenuList>
                   </Menu>
@@ -128,11 +161,12 @@ const TabTables = (props) => {
               </Grid>
             </Grid>
             <Box display="flex" alignItems="center">
-              <Button mt={4} marginX="auto" colorScheme="blue" type="submit">
-                Login
+              <Button mt={4} marginX="auto" colorScheme="blue" type="submit"  onClick={handleChange}>
+                Add Beneficiary
               </Button>
             </Box>
           </TabPanel>
+                     
         }
         {extra &&
           <TabPanel>

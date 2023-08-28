@@ -6,9 +6,10 @@ import {
   Flex,
   Text,
   useColorModeValue,
+  Spacer
 } from "@chakra-ui/react";
 import React from "react";
-
+import DynamicForm from "./DynamicForm";
 const Header = ({
   backgroundHeader,
   backgroundProfile,
@@ -64,7 +65,7 @@ const Header = ({
             lg: "translateY(160%)",
           }}>
           <Flex
-            align='center'
+           alignItems="flex-end"
             mb={{ sm: "10px", md: "0px" }}
             direction={{ sm: "column", md: "row" }}
             w={{ sm: "100%" }}
@@ -91,6 +92,8 @@ const Header = ({
                 {email}
               </Text>
             </Flex>
+            <Spacer/>
+          {/* <DynamicForm/> */}
           </Flex>
           {/* <Flex
             direction={{ sm: "column", lg: "row" }}
