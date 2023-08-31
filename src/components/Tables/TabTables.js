@@ -39,13 +39,15 @@ const TabTables = (props) => {
   const handleTabChange = (index) => {
     setSelectedTab(index);
   };
-  const { TabName, form, datas, header, extra, header2, data2, data3, header3 } = props;
+  const { TabName, form, datas, header, extra, header2, data2, data3, header3,header4,data4 } = props;
   const key1 = Object.keys(datas[0]);
   var key2 = 0;
   var key3 = 0;
+  var key4=0;
   if (extra) {
     key2 = Object.keys(data2[0]);
     key3 = Object.keys(data3[0]);
+     key4=Object.keys(data4[0]);
   }
  
 
@@ -223,8 +225,35 @@ const handleMenuClick=(value)=>{
               </Tbody>
             </Table>
           </TabPanel>
+        }
 
-
+{extra &&
+          <TabPanel>
+            <Table variant="styled">
+              <Thead>
+                <Tr>
+                  {header4.map((head) => {
+                    return (
+                      <Th>{head}</Th>
+                    );
+                  })}
+                </Tr>
+              </Thead>
+              <Tbody>
+              {data4.map((data, index) => {
+                  return (
+                    <Tr key={index}>
+                      {key4.map((item) => {
+                        return (
+                          <Td>{data[item]}</Td>
+                        )
+                      })}
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </TabPanel>
         }
       </TabPanels>
     </Tabs>
