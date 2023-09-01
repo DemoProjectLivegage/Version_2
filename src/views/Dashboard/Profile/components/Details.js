@@ -18,8 +18,9 @@ const Details = ({
 
   const textColor = useColorModeValue("gray.700", "white");
   const loanD = [
-    "piPmtAmt",
     "upbAmt",
+    "piPmtAmt",
+    "taxInsurancePmtAmt",
     "remainingPayments",
     "pmtDueDate",
   ]
@@ -29,7 +30,6 @@ const Details = ({
     "loanBoardingDate",
     "noteRatePercent",
     "escrow",
-    "taxInsurancePmtAmt",
     "totalLoanAmount",
     "loanTerm",
     "loanType",

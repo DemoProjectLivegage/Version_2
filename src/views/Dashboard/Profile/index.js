@@ -43,6 +43,7 @@ function Profile() {
           )
           .then((resp) => {
             setLoanData(resp.data);
+            console.log("data: ",resp.data);
           })
           .catch((error) => {
             console.log(error);
@@ -85,9 +86,8 @@ function Profile() {
             "Loan Boarding Date",
             "Note Rate Percent",
             "Escrow",
-           
             "Total Loan Amount",
-            "Loan Term (In Years)",
+            "Loan Term ",
             "Loan Type",
             "Payment Frquency",
             "Property Address",
@@ -99,9 +99,9 @@ function Profile() {
           <Details
             title={"Payment Details"}
             header={[
+              "UPB Amount",
               "Pi Payment Amount",
               "Tax And Insurance Amount",
-              "UPB Amount",
               "Remaining Payments",
               "Due Date",
             ]}
