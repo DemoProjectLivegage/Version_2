@@ -62,7 +62,7 @@ const Borrower = ({ title, captions }) => {
           <ToastContainer />
         </Flex>
       </Grid>
-      ,<CardHeader p='6px 0px 22px 0px'>
+      <CardHeader p='6px 0px 22px 0px'>
         <Text fontSize='xl' color={textColor} fontWeight='bold'>
           {title}
         </Text>

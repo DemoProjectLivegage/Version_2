@@ -100,8 +100,8 @@ function Profile() {
             title={"Payment Details"}
             header={[
               "UPB Amount",
-              "Pi Payment Amount",
-              "Tax And Insurance Amount",
+              "PI Payment Amount",
+              "Escrow Amount",
               "Remaining Payments",
               "Due Date",
             ]}
