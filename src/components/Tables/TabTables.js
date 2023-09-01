@@ -39,7 +39,7 @@ const TabTables = (props) => {
 
 
   const handleNameChange = (e) => {
-    if(containsOnlyCharacters(e.target.value)){
+    if (containsOnlyCharacters(e.target.value)) {
       setName(e.target.value)
     }
   }
@@ -127,7 +127,7 @@ const TabTables = (props) => {
               <Grid templateRows={{ sm: "1fr", xl: "repeat(3, .1fr)" }} gap='22px'>
                 <FormControl>
                   <FormLabel mt={4}>Escrow Type</FormLabel>
-                  <Input type="text" placeholder="Enter escrow type" value={type} onChange={(e) =>containsOnlyCharacters(e.target.value)? setType(e.target.value):""} />
+                  <Input type="text" placeholder="Enter escrow type" value={type} onChange={(e) => containsOnlyCharacters(e.target.value) ? setType(e.target.value) : ""} />
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Beneficiary Name</FormLabel>
@@ -135,13 +135,13 @@ const TabTables = (props) => {
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Account Number</FormLabel>
-                  <Input type="number" placeholder="Enter account number" value={account} onChange={(e) =>containsOnlyCharacters(e.target.value)? "":setAccount(e.target.value)} />
+                  <Input type="number" placeholder="Enter account number" value={account} onChange={(e) => containsOnlyCharacters(e.target.value) ? "" : setAccount(e.target.value)} />
                 </FormControl>
               </Grid>
               <Grid templateRows={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap='22px'>
                 <FormControl mt={4}>
                   <FormLabel>Routing Number</FormLabel>
-                  <Input type="text" placeholder="Enter routing number" value={number} onChange={(e) =>setNumber(e.target.value)} />
+                  <Input type="text" placeholder="Enter routing number" value={number} onChange={(e) => setNumber(e.target.value)} />
                 </FormControl >
                 <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap="20px">
                   <FormControl mt={10}>
