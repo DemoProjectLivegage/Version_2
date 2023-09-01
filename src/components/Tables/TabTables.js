@@ -140,8 +140,8 @@ const handleMenuClick=(value)=>{
                      Payment Mode
                     </MenuButton>
                     <MenuList  >
-                      <MenuItem onClick={()=> handleMenuItemClick("CHEQUE")}>Cheque</MenuItem>
-                      <MenuItem onClick={()=> handleMenuItemClick("WIRED")}>Wired</MenuItem>
+                      <MenuItem onClick={()=> handleMenuItemClick("CHECK")}>Check</MenuItem>
+                      <MenuItem onClick={()=> handleMenuItemClick("WIRE")}>Wire</MenuItem>
                     
                     </MenuList>
                   </Menu>

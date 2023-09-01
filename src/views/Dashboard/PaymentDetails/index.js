@@ -5,10 +5,10 @@ import { useLocation } from "react-router-dom";
 
 export default function PaymentDetails() {
     const tabs = ["Payment Schedule", "Escrow Beneficiaries", "Escrow Payment","Show Transactions"];
-    var [headers, setHeader] = useState([ "Payment Date", "Principal Amount", "Interest Amount", "Escrow Amount","Monthly Payment","UPB Amount","Note Interest Rate"]);
+    var [headers, setHeader] = useState([ "Payment Date", "Principal Amount", "Interest Amount", "Escrow Amount","Monthly Payment","UPB Amount"]);
     var [header2, setHeader2] = useState(["Escrow Type", "Name", "Account Number", "Routing Number", "Payment Mode", "Frequency"]);
-    var [header3,setHeader3] = useState(["Beneficiary Id","Date", "Escrow Payment Amount", "Escrow Disbursement Amount", "Beneficiary Name","Escrow Balance","Frequency"]);
-    var [header4, setHeader4]=useState(["Transaction Date","Sheduled Amount","Received Amount","Interest Amount","Principal Amount","Escrow Amount","Late Charges","Other Fees","Suspense","UPB Amount"])
+    var [header3,setHeader3] = useState(["Beneficiary Id","Date", "Escrow Payment Amount", "Escrow Disbursement Amount", "Beneficiary Name","Frequency","Escrow Balance"]);
+    var [header4, setHeader4]=useState(["Transaction Date","Scheduled Amount","Received Amount","Interest Amount","Principal Amount","Escrow Amount","Late Charges","Other Fees","Suspense","UPB Amount"])
     const location = useLocation();
     const [data, setData] = useState([{
       "Payment Schedule":"Not Selected"

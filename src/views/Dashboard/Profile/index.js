@@ -85,9 +85,9 @@ function Profile() {
             "Loan Boarding Date",
             "Note Rate Percent",
             "Escrow",
-            "Tax And Insurance Amount",
+           
             "Total Loan Amount",
-            "Loan Term",
+            "Loan Term (In Years)",
             "Loan Type",
             "Payment Frquency",
             "Property Address",
@@ -97,11 +97,12 @@ function Profile() {
         />
         <Grid templateRows={{ sm: "1fr", xl: "repeat(2, 1fr)" }} gap="20px">
           <Details
-            title={"Loan Details"}
+            title={"Payment Details"}
             header={[
               "Pi Payment Amount",
+              "Tax And Insurance Amount",
               "UPB Amount",
-              "Remaining Amount",
+              "Remaining Payments",
               "Due Date",
             ]}
             data={loanData}
