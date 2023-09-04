@@ -33,13 +33,13 @@ const TabTables = (props) => {
   const [mode, setMode] = useState("");
   const [frequency, setFrequency] = useState("");
   function containsOnlyCharacters(inputString) {
-    var pattern = /[^A-Za-z]/;
+    var pattern = /[^A-Za-z ]/;
     return !pattern.test(inputString);
   }
 
 
   const handleNameChange = (e) => {
-    if (containsOnlyCharacters(e.target.value)) {
+    if (containsOnlyCharacters(e.target.value) || e.target.value===" ") {
       setName(e.target.value)
     }
   }
