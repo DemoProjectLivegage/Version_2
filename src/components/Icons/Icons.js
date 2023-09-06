@@ -1,4 +1,11 @@
 import { createIcon } from "@chakra-ui/icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+// export const General = General => (
+//   <div>
+// <FontAwesomeIcon icon="fa-regular fa-book-open-cover" />
+//   </div>
+// )
 
 export const AdobexdLogo = createIcon({
   displayName: "AdobexdLogo",
@@ -500,6 +507,7 @@ export const WalletIcon = createIcon({
     </g>
   ),
 });
+
 
 export const VisaIcon = createIcon({
   displayName: "VisaIcon",

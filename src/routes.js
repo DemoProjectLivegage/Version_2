@@ -1,4 +1,3 @@
-// import
 import Dashboard from "views/Dashboard/Dashboard";
 import Tables from "views/Dashboard/Tables";
 // import Information from "views/Dashboard/Tables/Borrower_information/Information";
@@ -9,6 +8,7 @@ import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
 import TabTables from "components/Tables/TabTables";
 import PaymentDetails from "views/Dashboard/PaymentDetails";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   HomeIcon,
   StatsIcon,
@@ -17,8 +17,11 @@ import {
   DocumentIcon,
   RocketIcon,
   SupportIcon,
-  BeneficiaryIcon
+  BeneficiaryIcon,
+  General
 } from "components/Icons/Icons";
+import general_Mapper from "views/GeneralLedger";
+import GL_Table from "views/GeneralLedger/components/GL_Table";
 
 
 var dashRoutes = [
@@ -49,12 +52,24 @@ var dashRoutes = [
   {
     path: "/beneficiary",
     name: "Show Beneficiairies",
-    // rtlName: "لوحة القيادة",
     icon: <PersonIcon color="inherit" />,
-    // secondaryNavbar: true,
     component: Beneficiaries ,
     layout: "/admin",
    },
+  {
+    path: "/Map_ledger",
+    name: "Map Ledger",
+    // icon: <General color="inherit" />,
+    component:  general_Mapper,
+    layout: "/admin",
+   },
+  {
+    path: "/general_ledger",
+    name: "General Ledger",
+    // icon: <General color="inherit" />,
+    component:  GL_Table,
+    layout: "/admin",
+   }
   // {
   //   name: "ACCOUNT PAGES",
   //   category: "account",
