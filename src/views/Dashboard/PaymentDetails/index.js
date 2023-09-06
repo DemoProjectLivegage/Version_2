@@ -4,7 +4,9 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 export default function PaymentDetails() {
-    const tabs = ["Payment Schedule", "Escrow Beneficiaries", "Escrow Payment","Show Transactions"];
+    const tabs = ["Payment Schedule", "Escrow Beneficiaries", "Escrow Payment","Show Transactions","GL Transaction"];
+    var [glheader,setglheader] = useState(["GL Account Number", "GL Account Name", "Description", "Debit", "Credit"]);
+
     var [headers, setHeader] = useState([ "Payment Date", "Principal Amount", "Interest Amount", "Escrow Amount","Monthly Payment","UPB Amount"]);
     var [header2, setHeader2] = useState(["Escrow Type", "Name", "Account Number", "Routing Number", "Payment Mode", "Frequency"]);
     var [header3,setHeader3] = useState(["Beneficiary Id","Date", "Escrow Payment Amount", "Escrow Disbursement Amount", "Beneficiary Name","Frequency","Escrow Balance"]);
@@ -16,6 +18,9 @@ export default function PaymentDetails() {
 
     const [paymentdata, setPaymentdata] = useState([{
         "NotSelected": "Not Opted for escrow."
+    }])
+    const [gldata, setgldata] = useState([{
+        "NotSelected": "Not Opted for GL."
     }])
 
     const [escrowdata, setEscrowdata] = useState([
@@ -67,13 +72,24 @@ export default function PaymentDetails() {
         }).catch((error)=>{
             setHeader4([""])
             })
+            axios.get(`http://localhost:5000/api/`)
+            .then((response)=>{
+                if (response.data.length !== 0)
+                setTransaction(response.data)
+            else setglheader([""])
+        }).catch((error)=>{
+            setHeader4([""])
+            })
     }, [])
+    
+    ////////////////GENERAL LEDGER API////////////////////////////////
+            
 
 
     return (
         <>
             {console.log(header2)}
-            <TabTables TabName={tabs} header={headers} datas={data} form={false} extra={true} header2={header2} data2={paymentdata} header3={header3} data3={escrowdata} header4={header4} data4={transaction}/>
+            <TabTables TabName={tabs} header={headers} glheader={glheader} gldata={gldata} datas={data} form={false} extra={true} header2={header2} data2={paymentdata} header3={header3} data3={escrowdata} header4={header4} data4={transaction}/>
 
         </>
     )
