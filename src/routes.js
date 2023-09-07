@@ -18,11 +18,11 @@ import {
   RocketIcon,
   SupportIcon,
   BeneficiaryIcon,
-  General
+  General,MastercardIcon
 } from "components/Icons/Icons";
 import general_Mapper from "views/GeneralLedger";
 import GL_Table from "views/GeneralLedger/components/GL_Table";
-
+// import {FaBook} from  'react-icons/fa';
 
 var dashRoutes = [
   {
@@ -58,15 +58,15 @@ var dashRoutes = [
    },
   {
     path: "/Map_ledger",
-    name: "Map Ledger",
-    // icon: <General color="inherit" />,
+    name: "Create General Ledger",
+    icon: <CreditIcon color="inherit"  />,
     component:  general_Mapper,
     layout: "/admin",
-   },
+  },
   {
     path: "/general_ledger",
-    name: "General Ledger",
-    // icon: <General color="inherit" />,
+    name: "Show General Ledgers",
+    icon: <DocumentIcon color="inherit"  />,
     component:  GL_Table,
     layout: "/admin",
    }

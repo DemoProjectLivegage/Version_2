@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 export default function PaymentDetails() {
     const tabs = ["Payment Schedule", "Escrow Beneficiaries", "Escrow Payment", "Show Transactions", "GL Transaction"];
-    var [glheader, setglheader] = useState(["GL Account Number", "GL Account Name", "Description", "Debit", "Credit"]);
 
     var [headers, setHeader] = useState(["Payment Date", "Principal Amount", "Interest Amount", "Escrow Amount", "Monthly Payment", "UPB Amount"]);
     var [header2, setHeader2] = useState(["Escrow Type", "Name", "Account Number", "Routing Number", "Payment Mode", "Frequency"]);
@@ -30,6 +29,9 @@ export default function PaymentDetails() {
     ])
 
     const [transaction, setTransaction] = useState([{
+        "No Transaction": "Transaction is not yet done."
+    }])
+    const [glData, setGlData] = useState([{
         "No Transaction": "Transaction is not yet done."
     }])
     useEffect(() => {
@@ -72,14 +74,15 @@ export default function PaymentDetails() {
             }).catch((error) => {
                 setHeader4([""])
             })
-        // axios.get(`http://localhost:5000/api/`)
-        //     .then((response) => {
-        //         if (response.data.length !== 0)
-        //             setTransaction(response.data)
-        //         else setglheader([""])
-        //     }).catch((error) => {
-        //         setHeader4([""])
-        //     })
+
+        axios.get(`http://localhost:5000/api/coa/?id=${location.state}`)
+            .then((response) => {
+                if (response.data.length !== 0)
+                setGlData(response.data)
+
+            }).catch((error) => {
+            })
+
     }, [])
 
 
@@ -88,8 +91,6 @@ export default function PaymentDetails() {
 
         <TabTables TabName={tabs}
             header={headers}
-            glheader={glheader}
-            gldata={gldata}
             datas={data}
             form={false}
             extra={true}
@@ -98,6 +99,8 @@ export default function PaymentDetails() {
             header3={header3}
             data3={escrowdata}
             header4={header4}
-            data4={transaction} />
+            data4={transaction}
+            glData={glData}
+            />
     )
 }

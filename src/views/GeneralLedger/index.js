@@ -37,9 +37,9 @@ function index() {
     }
   }
 
-  const handlecoaChange = (value) => {
+  const handlecoaChange = (value,name) => {
     setcoatype(value);
-    setSelectedCOA(value);
+    setSelectedCOA(name);
   };
   const handletransChange = (value) => {
     settype(value);
@@ -61,7 +61,7 @@ function index() {
       "type": type,
       "operation": operation,
       "description": description,
-      "coa_id": selectedCOA
+      "coa_id": coatype
     }
 
     console.log(data);
@@ -153,7 +153,7 @@ function index() {
                 <MenuList >
                   {allCoa && allCoa.map((item) => {
                     return (
-                      <MenuItem onClick={() => handlecoaChange(item.coaid)}>{item.coa_name}</MenuItem>
+                      <MenuItem onClick={() => handlecoaChange(item.coaid,item.coa_name)}>{item.coa_name}</MenuItem>
                     )
                   })}
 
