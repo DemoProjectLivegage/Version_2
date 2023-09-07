@@ -15,10 +15,10 @@ function index() {
   const [description, setdescrition] = useState();
   const [type, settype] = useState("");
   const [operation, setoperation] = useState("");
-  const [selectedCOA, setSelectedCOA] = useState(''); 
-  const [selectedtran, setSelectedtran] = useState(''); 
-  const [selectedoper, setSelectedoper] = useState(''); 
-  const [allCoa, setAllCoa] = useState(''); 
+  const [selectedCOA, setSelectedCOA] = useState('');
+  const [selectedtran, setSelectedtran] = useState('');
+  const [selectedoper, setSelectedoper] = useState('');
+  const [allCoa, setAllCoa] = useState();
 
 
   function containsOnlyCharacters(inputString) {
@@ -44,7 +44,7 @@ function index() {
   const handletransChange = (value) => {
     settype(value);
     setSelectedtran(value);
-
+    console.log(value)
   };
 
   const handleOperChange = (value) => {
@@ -55,28 +55,32 @@ function index() {
 
 
   const handleSubmit = (e) => {
-    const data = [{
+    const data ={
       "account_no": accountno,
       "name": glname,
-      "type": coatype,
+      "type": type,
       "operation": operation,
       "description": description,
       "coa_id": selectedCOA
-    }]
-    axios.post(`http://localhost:5000/api/GenealLedger`, data)
+    }
+
+    console.log(data);
+    axios.post("http://localhost:5000/api/GeneralLedger/", data)
       .then((response) => {
         window.alert("Submitted")
         console.log("form submitted", data);
-      });
-    console.log("clicked")
+      }).catch((error) => {
+        console.log(error);
+      })
+
   }
 
-  useEffect( () => {
-    axios.get(`http://localhost:5000/api/coa`).then((response) =>
-    {
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/coa/all/`).then((response) => {
+      console.log(response.data)
       setAllCoa(response.data);
     })
-  },[])
+  }, [])
 
   return (
     <>
@@ -122,7 +126,7 @@ function index() {
                 </MenuList>
               </Menu>
 
-              <Button mt={6} style={{width:'150px'}} colorScheme="teal" onClick={handleSubmit} >
+              <Button mt={6} style={{ width: '150px' }} colorScheme="teal" onClick={handleSubmit} >
                 Submit
               </Button>
 
@@ -136,7 +140,7 @@ function index() {
                 type="number"
                 placeholder="Enter GL No."
                 value={accountno}
-                onChange={(e) => containsOnlyCharacters(e.target.value) ? "" : setaccountno(e.target.value)}
+                onChange={(e) => setaccountno(e.target.value)}
               />
 
 
@@ -148,9 +152,8 @@ function index() {
                 </MenuButton>
                 <MenuList >
                   {allCoa && allCoa.map((item) => {
-                    return
-                    (
-                    <MenuItem onClick={() => handlecoaChange(item.coaid)}>{item.coa_name}</MenuItem>
+                    return (
+                      <MenuItem onClick={() => handlecoaChange(item.coaid)}>{item.coa_name}</MenuItem>
                     )
                   })}
 
@@ -171,9 +174,6 @@ function index() {
 
                 </MenuList>
               </Menu>
-
-
-
 
             </Grid>
           </FormControl>

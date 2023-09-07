@@ -245,6 +245,7 @@ const TabTables = (props) => {
               <Thead>
                 <Tr>
                   {header4.map((head) => {
+                    console.log(head);
                     return (
                       <Th>{head}</Th>
                     );
