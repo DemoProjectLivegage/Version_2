@@ -4,7 +4,8 @@ import {
 
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function index() {
 
@@ -17,6 +18,7 @@ function index() {
   const [selectedCOA, setSelectedCOA] = useState(''); 
   const [selectedtran, setSelectedtran] = useState(''); 
   const [selectedoper, setSelectedoper] = useState(''); 
+  const [allCoa, setAllCoa] = useState(''); 
 
 
   function containsOnlyCharacters(inputString) {
@@ -51,15 +53,17 @@ function index() {
 
   };
 
+
   const handleSubmit = (e) => {
     const data = [{
-      "gl_name": glname,
       "account_no": accountno,
-      "coa_type": coatype,
-      "description": description,
+      "name": glname,
+      "type": coatype,
       "operation": operation,
+      "description": description,
+      "coa_id": selectedCOA
     }]
-    axios.post(`http://localhost:5000/api/`, data)
+    axios.post(`http://localhost:5000/api/GenealLedger`, data)
       .then((response) => {
         window.alert("Submitted")
         console.log("form submitted", data);
@@ -67,6 +71,12 @@ function index() {
     console.log("clicked")
   }
 
+  useEffect( () => {
+    axios.get(`http://localhost:5000/api/coa`).then((response) =>
+    {
+      setAllCoa(response.data);
+    })
+  },[])
 
   return (
     <>
@@ -137,12 +147,12 @@ function index() {
 
                 </MenuButton>
                 <MenuList >
-                  <MenuItem onClick={() => handlecoaChange("Assets")}>Assets</MenuItem>
-                  <MenuItem onClick={() => handlecoaChange("Liability")}>Liability</MenuItem>
-                  <MenuItem onClick={() => handlecoaChange("Expense")}>Expense</MenuItem>
-                  <MenuItem onClick={() => handlecoaChange("Revenue")}>Revenue</MenuItem>
-                  <MenuItem onClick={() => handlecoaChange("Cash")}>Cash</MenuItem>
-                  {/* <MenuItem onClick={() => handleCOA("")}></MenuItem> */}
+                  {allCoa && allCoa.map((item) => {
+                    return
+                    (
+                    <MenuItem onClick={() => handlecoaChange(item.coaid)}>{item.coa_name}</MenuItem>
+                    )
+                  })}
 
                 </MenuList>
               </Menu>
