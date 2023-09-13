@@ -145,9 +145,9 @@ function index() {
 
 
 
-              <FormLabel >Chart of Account Type</FormLabel>
+              <FormLabel >Account Category</FormLabel>
               <Menu>
-                <MenuButton style={{ width: '250px' }} as={Button} rightIcon={<ChevronDownIcon />}>{selectedCOA || 'Select COA Type'}
+                <MenuButton style={{ width: '250px' }} as={Button} rightIcon={<ChevronDownIcon />}>{selectedCOA || 'Select Account Category'}
 
                 </MenuButton>
                 <MenuList >

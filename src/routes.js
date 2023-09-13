@@ -22,6 +22,7 @@ import {
 } from "components/Icons/Icons";
 import general_Mapper from "views/GeneralLedger";
 import GL_Table from "views/GeneralLedger/components/GL_Table";
+import GL_Map from "views/GeneralLedger/components/ShowGL_map";
 // import {FaBook} from  'react-icons/fa';
 
 var dashRoutes = [
@@ -69,7 +70,15 @@ var dashRoutes = [
     icon: <DocumentIcon color="inherit"  />,
     component:  GL_Table,
     layout: "/admin",
+   },
+   {
+    path: "/transaction_Mapping",
+    name: "Transactions Mapping",
+    icon: <DocumentIcon color="inherit"  />,
+    component:  GL_Map,
+    layout: "/admin",
    }
+
   // {
   //   name: "ACCOUNT PAGES",
   //   category: "account",

@@ -19,7 +19,8 @@ export default function PaymentDetails() {
         "NotSelected": "Not Opted for escrow."
     }])
     const [gldata, setgldata] = useState([{
-        "NotSelected": "Not Opted for GL."
+        "NotSelected": "Not Opted for GL.",
+        "Check": null
     }])
 
     const [escrowdata, setEscrowdata] = useState([
@@ -34,6 +35,7 @@ export default function PaymentDetails() {
     const [glData, setGlData] = useState([{
         "No Transaction": "Transaction is not yet done."
     }])
+
     useEffect(() => {
         // const loan_id =1;
         // ids =location.state
@@ -77,8 +79,9 @@ export default function PaymentDetails() {
 
         axios.get(`http://localhost:5000/api/coa/?id=${location.state}`)
             .then((response) => {
-                if (response.data.length !== 0)
-                setGlData(response.data)
+                if (response.data.length !== 0) { 
+                    console.log("yhi hai"+response.data)
+                    setGlData(response.data) }
 
             }).catch((error) => {
             })
@@ -101,6 +104,6 @@ export default function PaymentDetails() {
             header4={header4}
             data4={transaction}
             glData={glData}
-            />
+        />
     )
 }

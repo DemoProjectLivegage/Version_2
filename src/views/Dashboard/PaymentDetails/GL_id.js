@@ -1,12 +1,15 @@
 import React from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import { check } from 'prettier';
 
 
 
 const GL_id = (props) => {
     const {data} = props;
     // const data=glData;
+    if(data[0]["check"] === null)return (<div>{data[0]} </div>)
     return (
+
         <Table variant="simple" >
             <Thead>
                 <Tr>
@@ -19,7 +22,7 @@ const GL_id = (props) => {
                 </Tr>
             </Thead>
             <Tbody>
-                {data.map((parentItem) => (
+                {data && data.map((parentItem) => (
                     <React.Fragment key={parentItem.coaid}>
                         {/* Parent Row */}
                         <Tr>
