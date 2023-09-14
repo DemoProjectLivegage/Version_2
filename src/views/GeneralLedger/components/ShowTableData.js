@@ -19,7 +19,7 @@ const ShowTableData = () => {
         <Table variant="simple" my={100} >
             <Thead>
                 <Tr>
-                    {data.some((item) => item.gl_list.length > 0) && <Th>COA Name</Th>}
+                    {data.some((item) => item.gl_list.length > 0) && <Th>Account Category</Th>}
                     <Th>Account No</Th>
                     <Th>Name</Th>
                     <Th>Description</Th>

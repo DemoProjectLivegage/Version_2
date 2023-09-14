@@ -17,6 +17,8 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import TabTables from "components/Tables/TabTables";
 import MakePaymentComponent from "components/PaymentComponent/MakePaymentComponent";
+import Bar from "../../Graph_View/Barchart" 
+import Piechart from "../../Graph_View/Piechart" 
 function Profile() {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
@@ -63,7 +65,7 @@ function Profile() {
         name={borrowerData.name}
         email={borrowerData.email}
       />
-      <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap="22px">
+      <Grid templateColumns={{ sm: "1fr", xl: "repeat(2, 2fr)" }} gap="22px">
         <ProfileInformation
           title={"Borrower Information"}
           name={borrowerData.name}
@@ -74,6 +76,7 @@ function Profile() {
         />
 
         {/* <Conversations title={"Conversations"} /> */}
+      {masterLoanData.loanInformationId &&<Piechart id={masterLoanData.loanInformationId}/>}
       </Grid>
       <hr></hr>
       <hr></hr>
@@ -125,8 +128,13 @@ function Profile() {
               monthly_Payment_Amount={loanData.monthly_payment_amount}
             />
           </ButtonGroup>
+
         </Grid>
+
       </Grid>
+      {masterLoanData.loanInformationId &&
+      <Bar id={masterLoanData.loanInformationId} />
+}
       {/* <Projects title={"Loan Details"} description={"User Loan Details"} /> */}
     </Flex>
   ) : (

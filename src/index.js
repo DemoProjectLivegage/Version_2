@@ -6,6 +6,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import AuthLayout from "layouts/Auth.js";
 import AdminLayout from "layouts/Admin.js";
 import RTLLayout from "layouts/RTL.js";
+import * as echarts from 'echarts';
 
 ReactDOM.render(
   <HashRouter>

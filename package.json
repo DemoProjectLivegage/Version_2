@@ -21,6 +21,8 @@
 		"axios": "^1.4.0",
 		"babel-plugin-macros": "^3.1.0",
 		"classnames": "2.3.1",
+		"echarts": "^5.4.3",
+		"echarts-for-react": "^3.0.2",
 		"framer-motion": "^4.1.17",
 		"match-sorter": "6.3.0",
 		"moment": "2.29.1",
