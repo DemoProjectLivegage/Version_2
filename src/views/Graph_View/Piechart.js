@@ -20,9 +20,9 @@ function Piechart(props) {
 
             text: 'Total Payments', // The text for the title  
             bottom: 'bottom',
-            left:"center",
+            left: "center",
             textStyle: {
-            fontSize: 16 // Customize the font size and other text styles
+                fontSize: 16 // Customize the font size and other text styles
             }
         },
         legend: {

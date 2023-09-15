@@ -80,7 +80,7 @@ function Profile() {
       </Grid>
       <hr></hr>
       <hr></hr>
-      <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap="22px">
+      <Grid templateColumns={{ sm: "1fr", xl: "repeat(2, 1fr)" }} gap="22px">
         <Details
           title={"Loan Information"}
           header={[

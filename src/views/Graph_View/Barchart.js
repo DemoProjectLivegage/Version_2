@@ -20,10 +20,10 @@ const posList = [
 
 function Barchart() {
 
-  const [date,setDate] =useState([]);
-  const [principal,setPrincipal] =useState([]);
-  const [upb,setUPB] =useState([]);
-  const [interest,setInterest] =useState([]);
+  const [date, setDate] = useState([]);
+  const [principal, setPrincipal] = useState([]);
+  const [upb, setUPB] = useState([]);
+  const [interest, setInterest] = useState([]);
   // const [pieData,setPieData] =useState('');
   // const [pieData,setPieData] =useState('');
   useEffect(() => {
@@ -67,7 +67,10 @@ function Barchart() {
     },
 
     legend: {
-      data: ['Principal', 'Interest']
+      top: "5%",
+      left: "center",
+      selectedMode: true,
+      data: ["UPB",'Principal', 'Interest']
     },
     toolbox: {
       show: true,
@@ -90,7 +93,7 @@ function Barchart() {
         axisLabel: {
           rotate: 45, // Rotate the labels by 45 degrees
         },
-        data:  date
+        data: date
       }
     ],
     yAxis: [
@@ -99,16 +102,16 @@ function Barchart() {
       }
     ],
     series: [
-      // {
-      //   name: 'UPB',
-      //   type: 'bar',
-      //   barGap: 0,
-      //   label: labelOption,
-      //   emphasis: {
-      //     focus: 'series'
-      //   },
-      //   data: upb
-      // },
+      {
+        name: 'UPB',
+        type: 'bar',
+        barGap: 0,
+        label: labelOption,
+        emphasis: {
+          focus: 'series'
+        },
+        data: upb
+      },
 
       {
 
