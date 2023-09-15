@@ -2,23 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactEcharts from "echarts-for-react";
 import axios from 'axios';
 
-const posList = [
-  'left',
-  'right',
-  'top',
-  'bottom',
-  'inside',
-  'insideTop',
-  'insideLeft',
-  'insideRight',
-  'insideBottom',
-  'insideTopLeft',
-  'insideTopRight',
-  'insideBottomLeft',
-  'insideBottomRight'
-];
-
-function Barchart() {
+function Barchart(props) {
 
   const [date, setDate] = useState([]);
   const [principal, setPrincipal] = useState([]);
@@ -27,7 +11,7 @@ function Barchart() {
   // const [pieData,setPieData] =useState('');
   // const [pieData,setPieData] =useState('');
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/Dashboard/bar/1`).then((response) => {
+    axios.get(`http://localhost:5000/api/Dashboard/bar/${props.id}`).then((response) => {
       setDate(response.data.map(item => item.due_Date))
       setPrincipal(response.data.map(item => item.principal_Amount))
       setUPB(response.data.map(item => item.upB_Amount))
