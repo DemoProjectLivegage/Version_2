@@ -6,6 +6,9 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function index() {
 
@@ -37,7 +40,7 @@ function index() {
     }
   }
 
-  const handlecoaChange = (value,name) => {
+  const handlecoaChange = (value, name) => {
     setcoatype(value);
     setSelectedCOA(name);
   };
@@ -52,10 +55,21 @@ function index() {
     setSelectedoper(value);
 
   };
+  const showToastMessage = (message, types) => {
+    if (types) {
+      toast.success(message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } else {
+      toast.error(message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
 
 
   const handleSubmit = (e) => {
-    const data ={
+    const data = {
       "account_no": accountno,
       "name": glname,
       "type": type,
@@ -67,8 +81,7 @@ function index() {
     console.log(data);
     axios.post("http://localhost:5000/api/GeneralLedger/", data)
       .then((response) => {
-        window.alert("Submitted")
-        console.log("form submitted", data);
+        showToastMessage("Account Created Successfully.", true);
       }).catch((error) => {
         console.log(error);
       })
@@ -153,7 +166,7 @@ function index() {
                 <MenuList >
                   {allCoa && allCoa.map((item) => {
                     return (
-                      <MenuItem onClick={() => handlecoaChange(item.coaid,item.coa_name)}>{item.coa_name}</MenuItem>
+                      <MenuItem onClick={() => handlecoaChange(item.coaid, item.coa_name)}>{item.coa_name}</MenuItem>
                     )
                   })}
 
@@ -177,6 +190,8 @@ function index() {
 
             </Grid>
           </FormControl>
+          <ToastContainer />
+
         </Grid>
 
       </Box>
